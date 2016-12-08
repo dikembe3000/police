@@ -1,6 +1,9 @@
 var map = L.map('map', {
-    center: [39.82, -98.58],
-    zoom: 3,
+    //for US
+    //center: [39.82, -98.58],
+    //for Charlotte 
+    center: [35.215135, -80.831639],
+    zoom: 12,
     minZoom: 2,
     maxZoom: 18
 });
@@ -11,8 +14,9 @@ L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
 	maxZoom: 19
 }).addTo(map);
 
-//add some geojson
-var teardrop = new L.icon({iconUrl:'images/Cat3.png'})
+//add some geojson Ian's Code
+var teardrop = new L.icon({iconUrl:'images/green.png'})
+//var teardrop2 = new L.icon({iconUrl:'images/pink.png'})
 
 function info (feature, layer) {
 layer.bindPopup("<h1>Name:  " + feature.properties.name +"</p>Race:  " + feature.properties.raceethnic + "</h1>");
@@ -22,4 +26,22 @@ layer.bindPopup("<h1>Name:  " + feature.properties.name +"</p>Race:  " + feature
 L.geoJSON(police,{
 onEachFeature: info   
 }).addTo(map);
+
+var black = L.geoJson (police, {
+filter: function(feature, layer) {
+    return feature.properties.raceethnic == "Black";    
+},
+PointtoLayer: function(feature, latlng) {
+return L.marker(latlng, {
+icon: teardrop
+});
+}
+});
+
+black.addTo(map)
+
+
+
+
+
 
