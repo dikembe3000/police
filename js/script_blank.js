@@ -18,15 +18,16 @@ L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
 var allicon = new L.icon({iconUrl:'images/green.png'})
 var blackicon = new L.icon({iconUrl:'images/pink.png'})
 
+function blackinfo (feature, layer) {
+layer.bindPopup("<h1>Name:  " + feature.properties.field_5 +"</p>Race:  " + feature.properties.field_8 + "</h1>");
+    layer.setIcon (blackicon);
+};
+
 function allinfo (feature, layer) {
 layer.bindPopup("<h1>Name:  " + feature.properties.name +"</p>Race:  " + feature.properties.raceethnic + "</h1>");
     layer.setIcon (allicon);
 };
 
-function blackinfo (feature, layer) {
-layer.bindPopup("<h1>Name:  " + feature.properties.name +"</p>Race:  " + feature.properties.raceethnic + "</h1>");
-    layer.setIcon (blackicon);
-};
 
 
 
