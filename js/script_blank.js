@@ -15,17 +15,35 @@ L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 //add some geojson Ian's Code
-var teardrop = new L.icon({iconUrl:'images/green.png'})
-//var teardrop2 = new L.icon({iconUrl:'images/pink.png'})
+var allicon = new L.icon({iconUrl:'images/green.png'})
+var blackicon = new L.icon({iconUrl:'images/pink.png'})
 
-function info (feature, layer) {
+function allinfo (feature, layer) {
 layer.bindPopup("<h1>Name:  " + feature.properties.name +"</p>Race:  " + feature.properties.raceethnic + "</h1>");
-    layer.setIcon (teardrop);
+    layer.setIcon (allicon);
 };
 
+function blackinfo (feature, layer) {
+layer.bindPopup("<h1>Name:  " + feature.properties.name +"</p>Race:  " + feature.properties.raceethnic + "</h1>");
+    layer.setIcon (blackicon);
+};
+
+
+
 L.geoJSON(police,{
-onEachFeature: info   
+onEachFeature: allinfo   
 }).addTo(map);
+
+L.geoJSON(black,{
+onEachFeature: blackinfo   
+}).addTo(map);
+
+
+
+
+
+
+
 
 //var black = L.geoJson (police, {
 //filter: function(feature, layer) {
