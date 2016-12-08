@@ -27,18 +27,18 @@ L.geoJSON(police,{
 onEachFeature: info   
 }).addTo(map);
 
-var black = L.geoJson (police, {
-filter: function(feature, layer) {
-    return feature.properties.raceethnic == "Black";    
-},
-PointtoLayer: function(feature, latlng) {
-return L.marker(latlng, {
-icon: teardrop
-});
-}
-});
-
-black.addTo(map)
+//var black = L.geoJson (police, {
+//filter: function(feature, layer) {
+//    return feature.properties.raceethnic == "Black";    
+//},
+//PointtoLayer: function(feature, latlng) {
+//return L.marker(latlng, {
+//icon: teardrop
+//});
+//}
+//});
+//
+//black.addTo(map)
 
 
 
